@@ -4,6 +4,13 @@
 
 **Scope:** Microsoft Fabric, Azure SQL / SQL platform, data management controls, and GitHub-based engineering delivery.
 
+## Dedicated Component Pages
+
+- [GitHub delivery pattern and pricing](docs/github.md)
+- [Microsoft Fabric deployment pattern and pricing](docs/fabric.md)
+- [SQL Platform deployment pattern and pricing](docs/sql-platform.md)
+- [Data Management deployment pattern and pricing](docs/data-management.md)
+
 ---
 
 ## 1. Executive Pattern
@@ -52,21 +59,13 @@ Azure / Microsoft Cloud
  │   ├── SQL Server on Azure VM, where required
  │   └── Backup / HA / DR
  │
- ├── Data Management
- │   ├── Microsoft Purview
- │   ├── Data Catalog
- │   ├── Data Classification
- │   ├── Data Lineage
- │   ├── Data Quality Rules
- │   └── Retention / Compliance Controls
- │
- └── Platform Operations
-     ├── Azure Monitor
-     ├── Log Analytics
-     ├── Cost Management
-     ├── Key Vault
-     ├── Managed Identity
-     └── RBAC
+ └── Data Management
+   ├── Microsoft Purview
+   ├── Data Catalog
+   ├── Data Classification
+   ├── Data Lineage
+   ├── Data Quality Rules
+   └── Retention / Compliance Controls
 ```
 
 ---
