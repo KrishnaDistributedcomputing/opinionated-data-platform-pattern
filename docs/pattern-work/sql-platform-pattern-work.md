@@ -22,27 +22,13 @@ This page defines the repeatable work pattern for selecting, deploying, migratin
 
 ```mermaid
 flowchart LR
-	Sources[Existing SQL Sources] --> Assess[Compatibility and Sizing Assessment]
-	Assess --> Decision{Target SQL Pattern}
-	Decision --> AzureSQL[Azure SQL Database]
-	Decision --> SQLMI[Azure SQL Managed Instance]
-	Decision --> SQLVM[SQL Server on Azure VM]
-	Entra[Microsoft Entra ID] --> AzureSQL
-	Entra --> SQLMI
-	Entra --> SQLVM
-	Network[Private Endpoint / Firewall / DNS] --> AzureSQL
-	Network --> SQLMI
-	Network --> SQLVM
-	KeyVault[Key Vault / Secrets] --> Apps[Apps, Pipelines, Fabric Connections]
-	AzureSQL --> Apps
-	SQLMI --> Apps
-	SQLVM --> Apps
-	Backup[Backup, Retention, HA/DR] --> AzureSQL
-	Backup --> SQLMI
-	Backup --> SQLVM
-	Monitor[Azure Monitor, SQL Insights, Alerts] --> AzureSQL
-	Monitor --> SQLMI
-	Monitor --> SQLVM
+    Sources[Existing SQL Estate] --> Assess[Assess Compatibility and Sizing]
+    Assess --> Select[Select SQL Deployment Pattern]
+    Select --> Target[Azure SQL Database / SQL MI / SQL VM]
+    Target --> Secure[Apply Identity, Network, and Encryption Controls]
+    Secure --> Protect[Configure Backup, HA, DR, and Retention]
+    Protect --> Operate[Monitor, Tune, and Optimize Cost]
+    Operate --> Consumers[Fabric Pipelines, Applications, and Reports]
 ```
 
 ## Workstreams
