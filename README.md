@@ -19,12 +19,12 @@
 
 ## Service Table
 
-| Service Area | Primary Services | Role in Pattern | Deployment Work | Pricing Driver |
-| --- | --- | --- | --- | --- |
-| GitHub | GitHub Enterprise Cloud, GitHub Actions, GitHub Advanced Security, GitHub Copilot | Engineering control plane for specs, code, CI/CD, security scanning, and release governance | Repository structure, branch protection, workflow gates, secrets policy, pull request approvals | Licensed users, Copilot seats, Advanced Security active committers, Actions minutes/storage |
-| Microsoft Fabric | OneLake, Lakehouse, Warehouse, Data Factory Pipelines, Power BI Semantic Models, Fabric Capacity | Analytics platform for ingestion, storage, transformation, semantic modelling, and reporting | Capacity setup, workspace model, OneLake design, pipelines, semantic models, deployment pipelines | F-SKU capacity, runtime hours, Power BI licensing, OneLake storage, pipeline/compute usage |
-| SQL Platform | Azure SQL Database, Azure SQL Managed Instance, SQL Server on Azure VM | Relational data platform for operational, compatibility, curated, and migration workloads | Target selection, migration readiness, compute/storage sizing, HA/DR, backup, security, monitoring | vCores/DTUs, storage, backup retention, HA/DR, licensing, Azure Hybrid Benefit eligibility |
-| Data Management | Microsoft Purview, Data Catalog, Classification, Lineage, Data Quality, Retention Controls | Governance layer for discovery, ownership, classification, lineage, data quality, and compliance | Catalog setup, scan configuration, classification model, access reviews, stewardship workflow | Purview usage, scan frequency, source count, governance scope, stewardship/operations effort |
+| Service | Purpose | Key Pricing Driver | Details |
+| --- | --- | --- | --- |
+| [GitHub](docs/github.md) | Specs, CI/CD, security, and release governance | Users, Copilot, Advanced Security, Actions | [Pricing](docs/github.md) |
+| [Microsoft Fabric](docs/fabric.md) | OneLake, lakehouse, warehouse, pipelines, BI | F-SKU capacity, runtime, storage, Power BI licensing | [Pricing](docs/fabric.md) / [Pattern work](docs/pattern-work/fabric-pattern-work.md) |
+| [SQL Platform](docs/sql-platform.md) | Azure SQL, SQL MI, SQL VM workloads | vCores, storage, backup, HA/DR, licensing | [Pricing](docs/sql-platform.md) / [Pattern work](docs/pattern-work/sql-platform-pattern-work.md) |
+| [Data Management](docs/data-management.md) | Purview, catalog, classification, lineage, quality | Purview usage, scans, governance scope, stewardship | [Pricing](docs/data-management.md) / [Pattern work](docs/pattern-work/data-management-pattern-work.md) |
 
 ---
 
