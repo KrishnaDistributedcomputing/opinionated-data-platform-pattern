@@ -4,6 +4,47 @@
 
 This page defines the repeatable work pattern for selecting, deploying, migrating, securing, and operating the SQL platform layer that supports the data platform.
 
+## Prerequisites
+
+| Prerequisite | Details Needed | Owner |
+| --- | --- | --- |
+| Source estate inventory | Server, database, size, version, compatibility level, dependencies, jobs, linked servers | DBA / App Owner |
+| Workload profile | CPU, memory, IO, DTU/vCore usage, query concurrency, peak windows, growth | DBA / Platform |
+| Target constraints | PaaS preference, SQL compatibility requirements, region, subscription, resource group | Architecture |
+| Availability needs | RPO, RTO, HA, DR, zone redundancy, geo-replication, backup retention | Business / Platform |
+| Security model | Microsoft Entra auth, SQL auth exceptions, RBAC, audit, encryption, private endpoint needs | Security |
+| Network model | VNet, subnet, DNS, firewall rules, private endpoint, source connectivity | Network |
+| Licensing | Azure Hybrid Benefit eligibility, existing SQL licenses, reservation assumptions | FinOps / Licensing |
+| Migration tooling | DMA/Azure Migrate approach, DMS needs, backup/restore, replication, rollback plan | DBA / Engineering |
+| Acceptance criteria | Performance baseline, failover validation, restore validation, cutover window | Product Owner |
+
+## Architecture Diagram
+
+```mermaid
+flowchart LR
+	Sources[Existing SQL Sources] --> Assess[Compatibility and Sizing Assessment]
+	Assess --> Decision{Target SQL Pattern}
+	Decision --> AzureSQL[Azure SQL Database]
+	Decision --> SQLMI[Azure SQL Managed Instance]
+	Decision --> SQLVM[SQL Server on Azure VM]
+	Entra[Microsoft Entra ID] --> AzureSQL
+	Entra --> SQLMI
+	Entra --> SQLVM
+	Network[Private Endpoint / Firewall / DNS] --> AzureSQL
+	Network --> SQLMI
+	Network --> SQLVM
+	KeyVault[Key Vault / Secrets] --> Apps[Apps, Pipelines, Fabric Connections]
+	AzureSQL --> Apps
+	SQLMI --> Apps
+	SQLVM --> Apps
+	Backup[Backup, Retention, HA/DR] --> AzureSQL
+	Backup --> SQLMI
+	Backup --> SQLVM
+	Monitor[Azure Monitor, SQL Insights, Alerts] --> AzureSQL
+	Monitor --> SQLMI
+	Monitor --> SQLVM
+```
+
 ## Workstreams
 
 | Workstream | Scope | Primary Output |
@@ -25,6 +66,20 @@ This page defines the repeatable work pattern for selecting, deploying, migratin
 - Licensing position and Azure Hybrid Benefit eligibility
 - Migration window and rollback requirements
 - Integration requirements with Fabric, pipelines, and reporting workloads
+
+## Implementation Details Needed
+
+| Area | Detail To Capture | Why It Matters |
+| --- | --- | --- |
+| Target service | Azure SQL Database, SQL Managed Instance, SQL VM, or hybrid | Determines feature support, operations, and cost model |
+| Compute | vCores/DTU, tier, serverless/provisioned, reserved capacity | Drives performance and monthly cost |
+| Storage | Data size, log size, tempdb needs, growth rate, max size | Prevents capacity and performance surprises |
+| HA/DR | Zone redundancy, failover group, geo-replication, backup retention | Meets production resilience requirements |
+| Security | Authentication mode, RBAC, firewall/private endpoint, audit, TDE, Defender | Establishes baseline controls |
+| Migration | Method, downtime, validation scripts, rollback plan, cutover owner | Reduces migration risk |
+| Operations | Maintenance, index tuning, monitoring alerts, backup restore tests | Makes the service supportable |
+| Integration | Fabric pipeline connection, app connection strings, reporting dependencies | Prevents downstream breakage |
+| Cost controls | Azure Hybrid Benefit, reservations, budget alerts, right-sizing cadence | Keeps SQL cost visible and optimized |
 
 ## Delivery Steps
 
