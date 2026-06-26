@@ -11,6 +11,12 @@
 - [SQL Platform deployment pattern and pricing](docs/sql-platform.md)
 - [Data Management deployment pattern and pricing](docs/data-management.md)
 
+## Dedicated Pattern Work
+
+- [Fabric pattern work](docs/pattern-work/fabric-pattern-work.md)
+- [SQL Platform pattern work](docs/pattern-work/sql-platform-pattern-work.md)
+- [Data Management pattern work](docs/pattern-work/data-management-pattern-work.md)
+
 ---
 
 ## 1. Executive Pattern
